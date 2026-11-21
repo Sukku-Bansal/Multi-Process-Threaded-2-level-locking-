@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE abiword PUBLIC "-//ABISOURCE//DTD AWML 1.0 Strict//EN" "http://www.abisource.com/awml.dtd">
+<abiword template="false" xmlns:ct="http://www.abisource.com/changetracking.dtd" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:math="http://www.w3.org/1998/Math/MathML" xid-max="245" xmlns:dc="http://purl.org/dc/elements/1.1/" styles="unlocked" fileformat="1.0" xmlns:svg="http://www.w3.org/2000/svg" xmlns:awml="http://www.abisource.com/awml.dtd" xmlns="http://www.abisource.com/awml.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.99.2" xml:space="preserve" props="dom-dir:ltr; document-footnote-restart-section:0; document-endnote-type:numeric; document-endnote-place-enddoc:1; document-endnote-initial:1; lang:en-US; document-endnote-restart-section:0; document-footnote-restart-page:0; document-footnote-type:numeric; document-footnote-initial:1; document-endnote-place-endsection:0">
+<!-- ======================================================================== -->
+<!-- This file is an AbiWord document.                                        -->
+<!-- AbiWord is a free, Open Source word processor.                           -->
+<!-- More information about AbiWord is available at http://www.abisource.com/ -->
+<!-- You should not edit this file by hand.                                   -->
+<!-- ======================================================================== -->
+
+<metadata>
+<m key="abiword.date_last_changed">Sat Nov 21 21:16:29 2026
+</m>
+<m key="abiword.generator">AbiWord</m>
+<m key="dc.creator">sukku</m>
+<m key="dc.date">Sat Nov 21 21:16:29 2026
+</m>
+<m key="dc.format">application/x-abiword</m>
+</metadata>
+<rdf>
+</rdf>
+<history version="1" edit-time="164" last-saved="1795295789" uid="6fa06584-e5f0-11f1-82b7-b99bd7911e75">
+<version id="1" started="1795295789" uid="d1625b10-e5f0-11f1-82b7-b99bd7911e75" auto="0" top-xid="245"/>
+</history>
+<styles>
+<s type="P" name="Normal" followedby="Current Settings" props="font-family:Times New Roman; margin-top:0pt; color:000000; margin-left:0pt; text-position:normal; widows:2; font-style:normal; text-indent:0in; font-variant:normal; font-weight:normal; margin-right:0pt; font-size:12pt; text-decoration:none; margin-bottom:0pt; line-height:1.0; bgcolor:transparent; text-align:left; font-stretch:normal"/>
+<s type="P" name="Heading 2" basedon="Normal" followedby="Normal" props="keep-with-next:1; margin-top:22pt; font-weight:bold; margin-bottom:3pt; font-family:Liberation Sans; font-size:14pt"/>
+</styles>
+<lists>
+<l id="1" parentid="0" type="0" start-value="1" list-delim="%L" list-decimal="."/>
+<l id="2" parentid="0" type="5" start-value="0" list-delim="%L" list-decimal="."/>
+<l id="3" parentid="0" type="5" start-value="0" list-delim="%L" list-decimal="."/>
+<l id="4" parentid="0" type="5" start-value="0" list-delim="%L" list-decimal="."/>
+</lists>
+<pagesize pagetype="Letter" orientation="portrait" width="8.500000" height="11.000000" units="in" page-scale="1.000000"/>
+<section xid="244" props="page-margin-footer:0.5in; page-margin-header:0.5in">
+<p style="Normal" xid="245" props="text-align:center"><c props="font-weight:bold; text-decoration:underline; font-size:18pt; font-style:italic">User Requirements Document (URD)</c></p>
+<p style="Heading 2" xid="1"><c>1. Purpose</c></p>
+<p style="Normal" xid="2"><c>This document states what the people who use or assess the Fair Shared Database program need from it, in plain terms. It describes needs, not implementation.</c></p>
+<p style="Heading 2" xid="3"><c>2. Background</c></p>
+<p style="Normal" xid="4"><c>Several independent programs (processes) must store records in one shared database. The database can only be safely used by one process at a time. Each process also does its work with many threads. The business problem is to let all processes make progress without data corruption, and without any process being made to wait forever by the others.</c></p>
+<p style="Heading 2" xid="5"><c>3. Stakeholders and users</c></p>
+<table xid="6">
+<cell xid="7" props="bot-attach:1; left-attach:0; right-attach:1; top-attach:0">
+<p xid="8"></p>
+<p style="Normal" xid="9"><c>Stakeholder</c></p>
+</cell>
+<cell xid="11" props="bot-attach:1; left-attach:1; right-attach:2; top-attach:0">
+<p xid="12"></p>
+<p style="Normal" xid="13"><c>Role</c></p>
+</cell>
+<cell xid="15" props="bot-attach:1; left-attach:2; right-attach:3; top-attach:0">
+<p xid="16"></p>
+<p style="Normal" xid="17"><c>What they care about</c></p>
+</cell>
+<cell xid="19" props="bot-attach:2; left-attach:0; right-attach:1; top-attach:1">
+<p xid="20"></p>
+<p style="Normal" xid="21"><c>Interviewer or assessor</c></p>
+</cell>
+<cell xid="23" props="bot-attach:2; left-attach:1; right-attach:2; top-attach:1">
+<p xid="24"></p>
+<p style="Normal" xid="25"><c>Reviews the submission</c></p>
+</cell>
+<cell xid="27" props="bot-attach:2; left-attach:2; right-attach:3; top-attach:1">
+<p xid="28"></p>
+<p style="Normal" xid="29"><c>Correct concurrency, clean structure, clear explanation</c></p>
+</cell>
+<cell xid="31" props="bot-attach:3; left-attach:0; right-attach:1; top-attach:2">
+<p xid="32"></p>
+<p style="Normal" xid="33"><c>Developer (Pushpendra)</c></p>
+</cell>
+<cell xid="35" props="bot-attach:3; left-attach:1; right-attach:2; top-attach:2">
+<p xid="36"></p>
+<p style="Normal" xid="37"><c>Builds and explains the program</c></p>
+</cell>
+<cell xid="39" props="bot-attach:3; left-attach:2; right-attach:3; top-attach:2">
+<p xid="40"></p>
+<p style="Normal" xid="41"><c>Easy to build, run, test and defend</c></p>
+</cell>
+<cell xid="43" props="bot-attach:4; left-attach:0; right-attach:1; top-attach:3">
+<p xid="44"></p>
+<p style="Normal" xid="45"><c>Operator or tester</c></p>
+</cell>
+<cell xid="47" props="bot-attach:4; left-attach:1; right-attach:2; top-attach:3">
+<p xid="48"></p>
+<p style="Normal" xid="49"><c>Runs the program and reads the result</c></p>
+</cell>
+<cell xid="51" props="bot-attach:4; left-attach:2; right-attach:3; top-attach:3">
+<p xid="52"></p>
+<p style="Normal" xid="53"><c>A clear pass or fail message</c></p>
+</cell>
+</table>
+<p style="Heading 2" xid="56"><c>4. User needs</c></p>
+<table xid="57">
+<cell xid="58" props="bot-attach:1; left-attach:0; right-attach:1; top-attach:0">
+<p xid="59"></p>
+<p style="Normal" xid="60"><c>ID</c></p>
+</cell>
+<cell xid="62" props="bot-attach:1; left-attach:1; right-attach:2; top-attach:0">
+<p xid="63"></p>
+<p style="Normal" xid="64"><c>Need</c></p>
+</cell>
+<cell xid="66" props="bot-attach:1; left-attach:2; right-attach:3; top-attach:0">
+<p xid="67"></p>
+<p style="Normal" xid="68"><c>Priority</c></p>
+</cell>
+<cell xid="70" props="bot-attach:2; left-attach:0; right-attach:1; top-attach:1">
+<p xid="71"></p>
+<p style="Normal" xid="72"><c>UR-01</c></p>
+</cell>
+<cell xid="74" props="bot-attach:2; left-attach:1; right-attach:2; top-attach:1">
+<p xid="75"></p>
+<p style="Normal" xid="76"><c>Several processes can store records in the same database</c></p>
+</cell>
+<cell xid="78" props="bot-attach:2; left-attach:2; right-attach:3; top-attach:1">
+<p xid="79"></p>
+<p style="Normal" xid="80"><c>Must</c></p>
+</cell>
+<cell xid="82" props="bot-attach:3; left-attach:0; right-attach:1; top-attach:2">
+<p xid="83"></p>
+<p style="Normal" xid="84"><c>UR-02</c></p>
+</cell>
+<cell xid="86" props="bot-attach:3; left-attach:1; right-attach:2; top-attach:2">
+<p xid="87"></p>
+<p style="Normal" xid="88"><c>Only one process uses the database at any moment</c></p>
+</cell>
+<cell xid="90" props="bot-attach:3; left-attach:2; right-attach:3; top-attach:2">
+<p xid="91"></p>
+<p style="Normal" xid="92"><c>Must</c></p>
+</cell>
+<cell xid="94" props="bot-attach:4; left-attach:0; right-attach:1; top-attach:3">
+<p xid="95"></p>
+<p style="Normal" xid="96"><c>UR-03</c></p>
+</cell>
+<cell xid="98" props="bot-attach:4; left-attach:1; right-attach:2; top-attach:3">
+<p xid="99"></p>
+<p style="Normal" xid="100"><c>Each process can do its work with many threads</c></p>
+</cell>
+<cell xid="102" props="bot-attach:4; left-attach:2; right-attach:3; top-attach:3">
+<p xid="103"></p>
+<p style="Normal" xid="104"><c>Must</c></p>
+</cell>
+<cell xid="106" props="bot-attach:5; left-attach:0; right-attach:1; top-attach:4">
+<p xid="107"></p>
+<p style="Normal" xid="108"><c>UR-04</c></p>
+</cell>
+<cell xid="110" props="bot-attach:5; left-attach:1; right-attach:2; top-attach:4">
+<p xid="111"></p>
+<p style="Normal" xid="112"><c>Threads and processes never corrupt or lose records</c></p>
+</cell>
+<cell xid="114" props="bot-attach:5; left-attach:2; right-attach:3; top-attach:4">
+<p xid="115"></p>
+<p style="Normal" xid="116"><c>Must</c></p>
+</cell>
+<cell xid="118" props="bot-attach:6; left-attach:0; right-attach:1; top-attach:5">
+<p xid="119"></p>
+<p style="Normal" xid="120"><c>UR-05</c></p>
+</cell>
+<cell xid="122" props="bot-attach:6; left-attach:1; right-attach:2; top-attach:5">
+<p xid="123"></p>
+<p style="Normal" xid="124"><c>No process waits forever while others keep getting access (no starvation)</c></p>
+</cell>
+<cell xid="126" props="bot-attach:6; left-attach:2; right-attach:3; top-attach:5">
+<p xid="127"></p>
+<p style="Normal" xid="128"><c>Must</c></p>
+</cell>
+<cell xid="130" props="bot-attach:7; left-attach:0; right-attach:1; top-attach:6">
+<p xid="131"></p>
+<p style="Normal" xid="132"><c>UR-06</c></p>
+</cell>
+<cell xid="134" props="bot-attach:7; left-attach:1; right-attach:2; top-attach:6">
+<p xid="135"></p>
+<p style="Normal" xid="136"><c>If a process crashes, the database is not left locked forever by the operating system lock</c></p>
+</cell>
+<cell xid="138" props="bot-attach:7; left-attach:2; right-attach:3; top-attach:6">
+<p xid="139"></p>
+<p style="Normal" xid="140"><c>Should</c></p>
+</cell>
+<cell xid="142" props="bot-attach:8; left-attach:0; right-attach:1; top-attach:7">
+<p xid="143"></p>
+<p style="Normal" xid="144"><c>UR-07</c></p>
+</cell>
+<cell xid="146" props="bot-attach:8; left-attach:1; right-attach:2; top-attach:7">
+<p xid="147"></p>
+<p style="Normal" xid="148"><c>One command builds the program and one command runs it</c></p>
+</cell>
+<cell xid="150" props="bot-attach:8; left-attach:2; right-attach:3; top-attach:7">
+<p xid="151"></p>
+<p style="Normal" xid="152"><c>Must</c></p>
+</cell>
+<cell xid="154" props="bot-attach:9; left-attach:0; right-attach:1; top-attach:8">
+<p xid="155"></p>
+<p style="Normal" xid="156"><c>UR-08</c></p>
+</cell>
+<cell xid="158" props="bot-attach:9; left-attach:1; right-attach:2; top-attach:8">
+<p xid="159"></p>
+<p style="Normal" xid="160"><c>The program reports clearly whether all expected records were stored</c></p>
+</cell>
+<cell xid="162" props="bot-attach:9; left-attach:2; right-attach:3; top-attach:8">
+<p xid="163"></p>
+<p style="Normal" xid="164"><c>Must</c></p>
+</cell>
+<cell xid="166" props="bot-attach:10; left-attach:0; right-attach:1; top-attach:9">
+<p xid="167"></p>
+<p style="Normal" xid="168"><c>UR-09</c></p>
+</cell>
+<cell xid="170" props="bot-attach:10; left-attach:1; right-attach:2; top-attach:9">
+<p xid="171"></p>
+<p style="Normal" xid="172"><c>The settings (number of processes, threads, jobs, batch size) can be changed easily</c></p>
+</cell>
+<cell xid="174" props="bot-attach:10; left-attach:2; right-attach:3; top-attach:9">
+<p xid="175"></p>
+<p style="Normal" xid="176"><c>Should</c></p>
+</cell>
+<cell xid="178" props="bot-attach:11; left-attach:0; right-attach:1; top-attach:10">
+<p xid="179"></p>
+<p style="Normal" xid="180"><c>UR-10</c></p>
+</cell>
+<cell xid="182" props="bot-attach:11; left-attach:1; right-attach:2; top-attach:10">
+<p xid="183"></p>
+<p style="Normal" xid="184"><c>The program ships with build and run instructions</c></p>
+</cell>
+<cell xid="186" props="bot-attach:11; left-attach:2; right-attach:3; top-attach:10">
+<p xid="187"></p>
+<p style="Normal" xid="188"><c>Must</c></p>
+</cell>
+<cell xid="190" props="bot-attach:12; left-attach:0; right-attach:1; top-attach:11">
+<p xid="191"></p>
+<p style="Normal" xid="192"><c>UR-11</c></p>
+</cell>
+<cell xid="194" props="bot-attach:12; left-attach:1; right-attach:2; top-attach:11">
+<p xid="195"></p>
+<p style="Normal" xid="196"><c>The program can be checked for thread data races</c></p>
+</cell>
+<cell xid="198" props="bot-attach:12; left-attach:2; right-attach:3; top-attach:11">
+<p xid="199"></p>
+<p style="Normal" xid="200"><c>Should</c></p>
+</cell>
+</table>
+<p style="Heading 2" xid="203"><c>5. Use scenarios</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="204" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="205"></field><c type="list_label">	</c><c props="font-weight:bold">Normal run.</c><c> The operator builds the program and runs it. Four processes each store 2000 records. The program prints that 8000 of 8000 records were stored and no worker failed.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="206" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="207"></field><c>	</c><c props="font-weight:bold">Fairness check.</c><c> The assessor opens the database file and sees records from each process arriving in groups of at most 50, taking turns, so no process hogs the database.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="208" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="209"></field><c>	</c><c props="font-weight:bold">Different load.</c><c> The operator changes the number of processes or the batch size, rebuilds, and runs again. The result message stays correct.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="210" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="211"></field><c>	</c><c props="font-weight:bold">Race check.</c><c> The operator builds with the thread checker enabled and runs the program. No race warning appears.</c></p>
+<p level="1" listid="1" parentid="0" style="Heading 2" xid="212" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c props="list-tag:1000"></c><c>6. Success criteria</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="213" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="214"></field><c>	The final message shows expected records equal to found records, with zero failed workers.</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="215" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="216"></field><c>	Records from different processes appear in alternating groups, not one process after another to the end.</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="217" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="218"></field><c>	The thread checker reports no data race.</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="219" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="220"></field><c>	A person who reads the README can build and run the program without help.</c></p>
+<p level="1" listid="2" parentid="0" style="Heading 2" xid="221" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label" props="list-tag:1001"></c><c type="list_label">7. Assumptions</c></p>
+<p level="1" listid="3" parentid="0" style="Normal" xid="222" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label"></c><field type="list_label" xid="223"></field><c>	The program runs on Linux with a C compiler and the pthread library.</c></p>
+<p level="1" listid="3" parentid="0" style="Normal" xid="224" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="225"></field><c>	The database is a flat text file, one record per line. The focus is on concurrency, not on SQL.</c></p>
+<p level="1" listid="3" parentid="0" style="Normal" xid="226" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="227"></field><c>	All processes run on one machine.</c></p>
+<p level="1" listid="3" parentid="0" style="Heading 2" xid="228" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label" props="list-tag:1002"></c><c type="list_label">8. Out of scope</c></p>
+<p level="1" listid="4" parentid="0" style="Normal" xid="229" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label"></c><field type="list_label" xid="230"></field><c>	Network access, remote clients, or several machines.</c></p>
+<p level="1" listid="4" parentid="0" style="Normal" xid="231" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="232"></field><c>	SQL queries, indexes, or transactions.</c></p>
+<p level="1" listid="4" parentid="0" style="Normal" xid="233" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="234"></field><c>	Reading records (the program only writes).</c></p>
+<p level="1" listid="4" parentid="0" style="Normal" xid="235" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="236"></field><c>	Recovering the ticket queue after a crash (listed as a known limitation).</c></p>
+<p level="1" listid="4" parentid="0" style="Normal" xid="237" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label" props="list-tag:1003"></c></p>
+</section>
+</abiword>

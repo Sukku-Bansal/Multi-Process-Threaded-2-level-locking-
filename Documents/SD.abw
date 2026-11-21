@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE abiword PUBLIC "-//ABISOURCE//DTD AWML 1.0 Strict//EN" "http://www.abisource.com/awml.dtd">
+<abiword template="false" xmlns:ct="http://www.abisource.com/changetracking.dtd" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:math="http://www.w3.org/1998/Math/MathML" xid-max="333" xmlns:dc="http://purl.org/dc/elements/1.1/" styles="unlocked" fileformat="1.0" xmlns:svg="http://www.w3.org/2000/svg" xmlns:awml="http://www.abisource.com/awml.dtd" xmlns="http://www.abisource.com/awml.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.99.2" xml:space="preserve" props="dom-dir:ltr; document-footnote-restart-section:0; document-endnote-type:numeric; document-endnote-place-enddoc:1; document-endnote-initial:1; lang:en-US; document-endnote-restart-section:0; document-footnote-restart-page:0; document-footnote-type:numeric; document-footnote-initial:1; document-endnote-place-endsection:0">
+<!-- ======================================================================== -->
+<!-- This file is an AbiWord document.                                        -->
+<!-- AbiWord is a free, Open Source word processor.                           -->
+<!-- More information about AbiWord is available at http://www.abisource.com/ -->
+<!-- You should not edit this file by hand.                                   -->
+<!-- ======================================================================== -->
+
+<metadata>
+<m key="abiword.date_last_changed">Sat Nov 21 21:10:28 2026
+</m>
+<m key="abiword.generator">AbiWord</m>
+<m key="dc.creator">sukku</m>
+<m key="dc.date">Sat Nov 21 21:10:28 2026
+</m>
+<m key="dc.format">application/x-abiword</m>
+</metadata>
+<rdf>
+</rdf>
+<history version="1" edit-time="438" last-saved="1795295428" uid="f52c514c-e5ee-11f1-82b7-b99bd7911e75">
+<version id="1" started="1795295428" uid="fa7840f6-e5ef-11f1-82b7-b99bd7911e75" auto="0" top-xid="333"/>
+</history>
+<styles>
+<s type="P" name="Normal" followedby="Current Settings" props="font-family:Times New Roman; margin-top:0pt; color:000000; margin-left:0pt; text-position:normal; widows:2; font-style:normal; text-indent:0in; font-variant:normal; font-weight:normal; margin-right:0pt; font-size:12pt; text-decoration:none; margin-bottom:0pt; line-height:1.0; bgcolor:transparent; text-align:left; font-stretch:normal"/>
+<s type="P" name="Heading 2" basedon="Normal" followedby="Normal" props="keep-with-next:1; margin-top:22pt; font-weight:bold; margin-bottom:3pt; font-family:Liberation Sans; font-size:14pt"/>
+<s type="P" name="Plain Text" basedon="Normal" followedby="Current Settings" props="font-family:Courier New"/>
+</styles>
+<lists>
+<l id="1" parentid="0" type="0" start-value="1" list-delim="%L" list-decimal="."/>
+<l id="2" parentid="0" type="5" start-value="0" list-delim="%L" list-decimal="."/>
+</lists>
+<pagesize pagetype="Letter" orientation="portrait" width="8.500000" height="11.000000" units="in" page-scale="1.000000"/>
+<section xid="332" props="page-margin-footer:0.5in; page-margin-header:0.5in">
+<p style="Normal" xid="333" props="text-align:center"><c props="font-weight:bold; text-decoration:underline; font-size:16pt; font-style:italic">System Design Document (SDD)</c><c props="font-size:16pt; text-decoration:none; font-weight:bold; font-style:italic"></c></p>
+<p style="Heading 2" xid="1"><c>1. Purpose</c></p>
+<p style="Normal" xid="2"><c>This document explains </c><c props="font-weight:bold">how the program is built</c><c> to meet the requirements in Documents 1 and 2, in simple words.</c></p>
+<p style="Heading 2" xid="3"><c>2. Big picture</c></p>
+<p style="Normal" xid="4"><c>There is one parent process and four worker processes. The parent sets things up, starts the workers, waits for them, and checks the result. Each worker runs a pool of eight threads. All workers share one database file, but only one worker may use it at a time.</c></p>
+<p style="Normal" xid="330"><c></c></p>
+<p style="Plain Text" xid="5"><c props="font-family:Courier">Parent process (main.c)<br/>   |-- creates db.dat and shared memory (ticket counters)<br/>   |-- forks 4 workers, then waits and checks the count<br/>   |<br/>   +-- Worker 0 -- 8 threads --+<br/>   +-- Worker 1 -- 8 threads --+--&gt; ticket queue --&gt; file lock --&gt; db.dat<br/>   +-- Worker 2 -- 8 threads --+<br/>   +-- Worker 3 -- 8 threads --+</c></p>
+<p style="Heading 2" xid="6"><c>3. Components</c></p>
+<table xid="7">
+<cell xid="8" props="bot-attach:1; left-attach:0; right-attach:1; top-attach:0">
+<p xid="9"></p>
+<p style="Normal" xid="10"><c>Component</c></p>
+</cell>
+<cell xid="12" props="bot-attach:1; left-attach:1; right-attach:2; top-attach:0">
+<p xid="13"></p>
+<p style="Normal" xid="14"><c>File</c></p>
+</cell>
+<cell xid="16" props="bot-attach:1; left-attach:2; right-attach:3; top-attach:0">
+<p xid="17"></p>
+<p style="Normal" xid="18"><c>Job</c></p>
+</cell>
+<cell xid="20" props="bot-attach:2; left-attach:0; right-attach:1; top-attach:1">
+<p xid="21"></p>
+<p style="Normal" xid="22"><c>Settings and shared types</c></p>
+</cell>
+<cell xid="24" props="bot-attach:2; left-attach:1; right-attach:2; top-attach:1">
+<p xid="25"></p>
+<p style="Normal" xid="26"><c>common.h</c></p>
+</cell>
+<cell xid="28" props="bot-attach:2; left-attach:2; right-attach:3; top-attach:1">
+<p xid="29"></p>
+<p style="Normal" xid="30"><c>Constants and the ticket lock structure</c></p>
+</cell>
+<cell xid="32" props="bot-attach:3; left-attach:0; right-attach:1; top-attach:2">
+<p xid="33"></p>
+<p style="Normal" xid="34"><c>Parent</c></p>
+</cell>
+<cell xid="36" props="bot-attach:3; left-attach:1; right-attach:2; top-attach:2">
+<p xid="37"></p>
+<p style="Normal" xid="38"><c>main.c</c></p>
+</cell>
+<cell xid="40" props="bot-attach:3; left-attach:2; right-attach:3; top-attach:2">
+<p xid="41"></p>
+<p style="Normal" xid="42"><c>Setup, fork, wait, verify, clean up</c></p>
+</cell>
+<cell xid="44" props="bot-attach:4; left-attach:0; right-attach:1; top-attach:3">
+<p xid="45"></p>
+<p style="Normal" xid="46"><c>Worker</c></p>
+</cell>
+<cell xid="48" props="bot-attach:4; left-attach:1; right-attach:2; top-attach:3">
+<p xid="49"></p>
+<p style="Normal" xid="50"><c>worker.c</c></p>
+</cell>
+<cell xid="52" props="bot-attach:4; left-attach:2; right-attach:3; top-attach:3">
+<p xid="53"></p>
+<p style="Normal" xid="54"><c>Thread pool, ticket and file locking, writing records</c></p>
+</cell>
+<cell xid="56" props="bot-attach:5; left-attach:0; right-attach:1; top-attach:4">
+<p xid="57"></p>
+<p style="Normal" xid="58"><c>Build</c></p>
+</cell>
+<cell xid="60" props="bot-attach:5; left-attach:1; right-attach:2; top-attach:4">
+<p xid="61"></p>
+<p style="Normal" xid="62"><c>Makefile</c></p>
+</cell>
+<cell xid="64" props="bot-attach:5; left-attach:2; right-attach:3; top-attach:4">
+<p xid="65"></p>
+<p style="Normal" xid="66"><c>Build, race test, memory test, clean</c></p>
+</cell>
+<cell xid="68" props="bot-attach:6; left-attach:0; right-attach:1; top-attach:5">
+<p xid="69"></p>
+<p style="Normal" xid="70"><c>Guide</c></p>
+</cell>
+<cell xid="72" props="bot-attach:6; left-attach:1; right-attach:2; top-attach:5">
+<p xid="73"></p>
+<p style="Normal" xid="74"><c>README.md</c></p>
+</cell>
+<cell xid="76" props="bot-attach:6; left-attach:2; right-attach:3; top-attach:5">
+<p xid="77"></p>
+<p style="Normal" xid="78"><c>How to build, run and what the design is</c></p>
+</cell>
+</table>
+<p style="Heading 2" xid="81"><c>4. Process isolation and what is shared</c></p>
+<p style="Normal" xid="82"><c>Each worker is a separate process created by fork, so it has </c><c props="font-weight:bold">its own private memory</c><c>. Its job counter, its batch counter and its mutex are private. Nothing is shared by accident. Only three things are shared on purpose:</c></p>
+<table xid="83">
+<cell xid="84" props="bot-attach:1; left-attach:0; right-attach:1; top-attach:0">
+<p xid="85"></p>
+<p style="Normal" xid="86"><c>Shared item</c></p>
+</cell>
+<cell xid="88" props="bot-attach:1; left-attach:1; right-attach:2; top-attach:0">
+<p xid="89"></p>
+<p style="Normal" xid="90"><c>How it is shared</c></p>
+</cell>
+<cell xid="92" props="bot-attach:1; left-attach:2; right-attach:3; top-attach:0">
+<p xid="93"></p>
+<p style="Normal" xid="94"><c>Why</c></p>
+</cell>
+<cell xid="96" props="bot-attach:2; left-attach:0; right-attach:1; top-attach:1">
+<p xid="97"></p>
+<p style="Normal" xid="98"><c>Ticket counters</c></p>
+</cell>
+<cell xid="100" props="bot-attach:2; left-attach:1; right-attach:2; top-attach:1">
+<p xid="101"></p>
+<p style="Normal" xid="102"><c>POSIX shared memory (shm_open and mmap)</c></p>
+</cell>
+<cell xid="104" props="bot-attach:2; left-attach:2; right-attach:3; top-attach:1">
+<p xid="105"></p>
+<p style="Normal" xid="106"><c>One common queue for all processes</c></p>
+</cell>
+<cell xid="108" props="bot-attach:3; left-attach:0; right-attach:1; top-attach:2">
+<p xid="109"></p>
+<p style="Normal" xid="110"><c>db.dat</c></p>
+</cell>
+<cell xid="112" props="bot-attach:3; left-attach:1; right-attach:2; top-attach:2">
+<p xid="113"></p>
+<p style="Normal" xid="114"><c>Each worker opens its own handle to the same file, in append mode</c></p>
+</cell>
+<cell xid="116" props="bot-attach:3; left-attach:2; right-attach:3; top-attach:2">
+<p xid="117"></p>
+<p style="Normal" xid="118"><c>The shared database</c></p>
+</cell>
+<cell xid="120" props="bot-attach:4; left-attach:0; right-attach:1; top-attach:3">
+<p xid="121"></p>
+<p style="Normal" xid="122"><c>db.lock</c></p>
+</cell>
+<cell xid="124" props="bot-attach:4; left-attach:1; right-attach:2; top-attach:3">
+<p xid="125"></p>
+<p style="Normal" xid="126"><c>Operating system file lock (fcntl)</c></p>
+</cell>
+<cell xid="128" props="bot-attach:4; left-attach:2; right-attach:3; top-attach:3">
+<p xid="129"></p>
+<p style="Normal" xid="130"><c>Only one process in the database at a time</c></p>
+</cell>
+</table>
+<p style="Heading 2" xid="133"><c>5. Two levels of locking</c></p>
+<table xid="134">
+<cell xid="135" props="bot-attach:1; left-attach:0; right-attach:1; top-attach:0">
+<p xid="136"></p>
+<p style="Normal" xid="137"><c>Level</c></p>
+</cell>
+<cell xid="139" props="bot-attach:1; left-attach:1; right-attach:2; top-attach:0">
+<p xid="140"></p>
+<p style="Normal" xid="141"><c>Between whom</c></p>
+</cell>
+<cell xid="143" props="bot-attach:1; left-attach:2; right-attach:3; top-attach:0">
+<p xid="144"></p>
+<p style="Normal" xid="145"><c>Tool</c></p>
+</cell>
+<cell xid="147" props="bot-attach:1; left-attach:3; right-attach:4; top-attach:0">
+<p xid="148"></p>
+<p style="Normal" xid="149"><c>What it protects</c></p>
+</cell>
+<cell xid="151" props="bot-attach:2; left-attach:0; right-attach:1; top-attach:1">
+<p xid="152"></p>
+<p style="Normal" xid="153"><c>Level 1</c></p>
+</cell>
+<cell xid="155" props="bot-attach:2; left-attach:1; right-attach:2; top-attach:1">
+<p xid="156"></p>
+<p style="Normal" xid="157"><c>Processes</c></p>
+</cell>
+<cell xid="159" props="bot-attach:2; left-attach:2; right-attach:3; top-attach:1">
+<p xid="160"></p>
+<p style="Normal" xid="161"><c>Ticket lock plus fcntl file lock</c></p>
+</cell>
+<cell xid="163" props="bot-attach:2; left-attach:3; right-attach:4; top-attach:1">
+<p xid="164"></p>
+<p style="Normal" xid="165"><c>The database, one process at a time, in fair order</c></p>
+</cell>
+<cell xid="167" props="bot-attach:3; left-attach:0; right-attach:1; top-attach:2">
+<p xid="168"></p>
+<p style="Normal" xid="169"><c>Level 2</c></p>
+</cell>
+<cell xid="171" props="bot-attach:3; left-attach:1; right-attach:2; top-attach:2">
+<p xid="172"></p>
+<p style="Normal" xid="173"><c>Threads in one process</c></p>
+</cell>
+<cell xid="175" props="bot-attach:3; left-attach:2; right-attach:3; top-attach:2">
+<p xid="176"></p>
+<p style="Normal" xid="177"><c>Mutex</c></p>
+</cell>
+<cell xid="179" props="bot-attach:3; left-attach:3; right-attach:4; top-attach:2">
+<p xid="180"></p>
+<p style="Normal" xid="181"><c>The job counter and the file write</c></p>
+</cell>
+</table>
+<p style="Normal" xid="184"><c>The mutex cannot work across processes because memory is private. The file lock does not separate threads of one process, because it belongs to the process. That is why </c><c props="font-weight:bold">both levels are needed</c><c>.</c></p>
+<p style="Heading 2" xid="185"><c>6. How a turn works (step by step)</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="186" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="187"></field><c type="list_label">	A thread inside a worker locks its mutex.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="188" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c type="list_label"></c><field type="list_label" xid="189"></field><c>	If the process does not yet hold the database, this thread takes a ticket number from shared memory.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="190" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="191"></field><c>	It waits (yielding the processor) until the shared "now serving" number equals its ticket.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="192" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="193"></field><c>	It takes the fcntl write lock on db.lock. The process now </c><c props="font-weight:bold">holds the database</c><c>.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="194" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="195"></field><c>	Threads of this process take the next jobs one by one. Each writes one line to db.dat.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="196" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="197"></field><c>	After 50 records, or when jobs are finished, the thread flushes the file to disk.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="198" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="199"></field><c>	It releases the fcntl lock and adds one to "now serving". The next ticket holder enters.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="200" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="201"></field><c>	If the process still has jobs, the next thread takes a new ticket and waits in line again.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="202" props="start-value:1; text-indent:-0.3in; list-style:Numbered List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="203"></field><c>	When all jobs are done, the threads exit and the worker ends.</c></p>
+<p style="Normal" xid="204" props="text-indent:0in; margin-left:0pt"><c type="list_label"></c></p>
+<p style="Normal" xid="329" props="text-indent:0in; margin-left:0pt"><c></c><c props="font-weight:bold">7. Why it is fair</c></p>
+<p style="Normal" xid="209" props="text-indent:0in; margin-left:0pt"><c>Tickets are given out in order and served in order, like a token number at a bank. A process that has just finished must take a </c><c props="font-weight:bold">new ticket at the back of the line</c><c>, so it cannot enter again before the others. The batch limit of 50 stops one process from using the database for too long.</c></p>
+<p style="Heading 2" xid="210" props="text-indent:0in; margin-left:0pt"><c>8. Why a thread pool</c></p>
+<p style="Normal" xid="211" props="text-indent:0in; margin-left:0pt"><c>Each thread uses about 8 MB of stack space by default. Thousands of threads would use gigabytes and may fail to start. Eight threads per process is cheap, and they work through the 2000 jobs together.</c></p>
+<p style="Heading 2" xid="212" props="text-indent:0in; margin-left:0pt"><c>9. Data and file format</c></p>
+<p style="Normal" xid="213" props="text-indent:0in; margin-left:0pt"><c>The database is a text file. Each line is one record, such as </c><c props="font-family:Courier">proc=1 job=37</c><c>. A line is written by one write call in append mode, so lines are not mixed up. The parent checks the result by counting lines.</c></p>
+<p style="Heading 2" xid="214" props="text-indent:0in; margin-left:0pt"><c>10. Error handling</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="215" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="216"></field><c type="list_label">	Every system call that can fail is checked, and a message is printed with the reason.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="217" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label"></c><field type="list_label" xid="218"></field><c>	If a worker cannot get the file lock, it gives up its ticket turn so the queue does not stop, and it stops its remaining jobs.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="219" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="220"></field><c>	If any worker returns a failure, the parent counts it and the program exits with an error.</c></p>
+<p level="1" listid="1" parentid="0" style="Normal" xid="221" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="222"></field><c>	The operating system releases a file lock by itself when its process ends.</c></p>
+<p level="1" listid="1" parentid="0" style="Heading 2" xid="223" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label" props="list-tag:1002"></c><c type="list_label">11. Design choices and alternatives</c></p>
+<table xid="224">
+<cell xid="225" props="bot-attach:1; left-attach:0; right-attach:1; top-attach:0">
+<p xid="226"></p>
+<p style="Normal" xid="227"><c type="list_label">Choice</c></p>
+</cell>
+<cell xid="229" props="bot-attach:1; left-attach:1; right-attach:2; top-attach:0">
+<p xid="230"></p>
+<p style="Normal" xid="231"><c type="list_label">Why</c></p>
+</cell>
+<cell xid="233" props="bot-attach:1; left-attach:2; right-attach:3; top-attach:0">
+<p xid="234"></p>
+<p style="Normal" xid="235"><c type="list_label">Alternative</c></p>
+</cell>
+<cell xid="237" props="bot-attach:2; left-attach:0; right-attach:1; top-attach:1">
+<p xid="238"></p>
+<p style="Normal" xid="239"><c type="list_label">Flat file as database</c></p>
+</cell>
+<cell xid="241" props="bot-attach:2; left-attach:1; right-attach:2; top-attach:1">
+<p xid="242"></p>
+<p style="Normal" xid="243"><c type="list_label">Keeps focus on concurrency</c></p>
+</cell>
+<cell xid="245" props="bot-attach:2; left-attach:2; right-attach:3; top-attach:1">
+<p xid="246"></p>
+<p style="Normal" xid="247"><c type="list_label">SQLite with the same locking</c></p>
+</cell>
+<cell xid="249" props="bot-attach:3; left-attach:0; right-attach:1; top-attach:2">
+<p xid="250"></p>
+<p style="Normal" xid="251"><c type="list_label">fcntl file lock</c></p>
+</cell>
+<cell xid="253" props="bot-attach:3; left-attach:1; right-attach:2; top-attach:2">
+<p xid="254"></p>
+<p style="Normal" xid="255"><c type="list_label">Cleaned up by the kernel on a crash</c></p>
+</cell>
+<cell xid="257" props="bot-attach:3; left-attach:2; right-attach:3; top-attach:2">
+<p xid="258"></p>
+<p style="Normal" xid="259"><c type="list_label">Shared memory mutex with the robust option</c></p>
+</cell>
+<cell xid="261" props="bot-attach:4; left-attach:0; right-attach:1; top-attach:3">
+<p xid="262"></p>
+<p style="Normal" xid="263"><c type="list_label">Ticket lock</c></p>
+</cell>
+<cell xid="265" props="bot-attach:4; left-attach:1; right-attach:2; top-attach:3">
+<p xid="266"></p>
+<p style="Normal" xid="267"><c type="list_label">Strict first come, first served</c></p>
+</cell>
+<cell xid="269" props="bot-attach:4; left-attach:2; right-attach:3; top-attach:3">
+<p xid="270"></p>
+<p style="Normal" xid="271"><c type="list_label">Plain file lock (not fair)</c></p>
+</cell>
+<cell xid="273" props="bot-attach:5; left-attach:0; right-attach:1; top-attach:4">
+<p xid="274"></p>
+<p style="Normal" xid="275"><c type="list_label">Batch of 50</c></p>
+</cell>
+<cell xid="277" props="bot-attach:5; left-attach:1; right-attach:2; top-attach:4">
+<p xid="278"></p>
+<p style="Normal" xid="279"><c type="list_label">Gives other processes a chance</c></p>
+</cell>
+<cell xid="281" props="bot-attach:5; left-attach:2; right-attach:3; top-attach:4">
+<p xid="282"></p>
+<p style="Normal" xid="283"><c type="list_label">Time slice</c></p>
+</cell>
+<cell xid="285" props="bot-attach:6; left-attach:0; right-attach:1; top-attach:5">
+<p xid="286"></p>
+<p style="Normal" xid="287"><c type="list_label">Thread pool</c></p>
+</cell>
+<cell xid="289" props="bot-attach:6; left-attach:1; right-attach:2; top-attach:5">
+<p xid="290"></p>
+<p style="Normal" xid="291"><c type="list_label">Low memory use</c></p>
+</cell>
+<cell xid="293" props="bot-attach:6; left-attach:2; right-attach:3; top-attach:5">
+<p xid="294"></p>
+<p style="Normal" xid="295"><c type="list_label">One thread per job</c></p>
+</cell>
+<cell xid="297" props="bot-attach:7; left-attach:0; right-attach:1; top-attach:6">
+<p xid="298"></p>
+<p style="Normal" xid="299"><c type="list_label">Busy wait with yield</c></p>
+</cell>
+<cell xid="301" props="bot-attach:7; left-attach:1; right-attach:2; top-attach:6">
+<p xid="302"></p>
+<p style="Normal" xid="303"><c type="list_label">Simple</c></p>
+</cell>
+<cell xid="305" props="bot-attach:7; left-attach:2; right-attach:3; top-attach:6">
+<p xid="306"></p>
+<p style="Normal" xid="307"><c type="list_label">Condition variable or semaphore in shared memory</c></p>
+</cell>
+</table>
+<p style="Heading 2" xid="310"><c type="list_label">12. Known weaknesses and improvements</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="311" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c type="list_label"></c><field type="list_label" xid="312"></field><c>	</c><c props="font-weight:bold">Crash during a turn.</c><c> A process that dies between taking a ticket and releasing it stalls the queue. Fix: a timeout, or a robust shared mutex, or a watchdog in the parent.</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="313" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="314"></field><c>	</c><c props="font-weight:bold">CPU use while waiting.</c><c> The yield loop keeps using some CPU. Fix: a process-shared semaphore or condition variable.</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="315" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="316"></field><c>	</c><c props="font-weight:bold">One writer at a time.</c><c> The database is not parallel. Fix: lock by record or region, and use a read-write lock for many readers.</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="317" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c></c><field type="list_label" xid="318"></field><c>	</c><c props="font-weight:bold">No read path.</c><c> Add readers that can share access.</c></p>
+<p level="1" listid="2" parentid="0" style="Heading 2" xid="319" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c props="list-tag:1003"></c><field type="list_label" xid="324" props="width:0in; font-family:Times New Roman; display:inline; font-style:normal; font-weight:normal; bgcolor:transparent; lang:en-US; text-position:normal; text-transform:none; homogeneous:1; color:000000; font-variant:normal; text-decoration:none; font-size:12pt; height:0in; list-style:Bullet List; font-stretch:normal"></field><c>13. How to explain it in an interview</c></p>
+<p style="Normal" xid="331" props="start-value:0; list-style:Bullet List; field-font:NULL"><c></c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="320" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c props="list-tag:1004"></c><field type="list_label" xid="325" props="width:0in; font-family:Times New Roman; display:inline; font-style:normal; font-weight:normal; bgcolor:transparent; lang:en-US; text-position:normal; text-transform:none; homogeneous:1; color:000000; font-variant:normal; text-decoration:none; font-size:12pt; height:0in; list-style:Bullet List; font-stretch:normal"></field><c>Start with this one sentence: the program uses a </c><c props="font-weight:bold">fair ticket queue in shared memory plus a file lock</c><c> to let one process at a time into the database, and a </c><c props="font-weight:bold">mutex</c><c> to keep the threads inside that process safe. Then explain why a pool, why a batch limit, and what happens on a crash.</c></p>
+<p level="1" listid="2" parentid="0" style="Normal" xid="321" props="start-value:0; text-indent:-0.3in; list-style:Bullet List; field-font:NULL; margin-left:0.50in"><c props="list-tag:1005"></c></p>
+</section>
+</abiword>
